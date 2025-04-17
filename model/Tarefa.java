@@ -6,14 +6,18 @@ import enums.Status;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+
 public class Tarefa {
     private String nome;
     private String descricao;
+    private Integer numeroTarefa;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
     private Prioridade prioridade;              //Associação com as enumerações...
     private Status status;
+
+
 
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -25,6 +29,7 @@ public class Tarefa {
     //Construtor sem a data de término caso a pessoa não queira colocar prazo!
 
     public Tarefa(String nome,Prioridade prioridade) {
+
         this.nome = nome;
         this.dataInicio = LocalDate.now();
         this.status = Status.PENDENTE;
@@ -36,6 +41,7 @@ public class Tarefa {
     }
 
     public Tarefa(String nome, String descricao,Prioridade prioridade) {
+
         this.nome = nome;
         this.dataInicio = LocalDate.now();
         this.status = Status.PENDENTE;
@@ -47,23 +53,27 @@ public class Tarefa {
 
 
     public Tarefa(String nome, String descricao,LocalDate dataFim, Prioridade prioridade) {
+
         this.nome = nome;
         this.dataInicio = LocalDate.now();
         this.status = Status.PENDENTE;
         this.prioridade = prioridade;           //Fiz uma sobrecarga de construtores para poder dar um opção maior de
         this.descricao = descricao;             //escolhas ao usuario na hora de adicionar alguma tarefa!
         this.dataFim = dataFim;         //E a sobrecarga me permite fazer isso de forma fácil
+        //this.numeroTarefa = randomNum;
         System.out.println();
         System.out.println("Tarefa adicionada com sucesso!");
     }
 
 
     public Tarefa(String nome, LocalDate dataFim, Prioridade prioridade) {
+
         this.nome = nome;
         this.dataInicio = LocalDate.now();     //Data da tarefa vai ser definido no dia que a pessoa adicionar a tarefa
         this.dataFim = dataFim;
         this.prioridade = prioridade;
         this.status = Status.PENDENTE;
+     //   this.numeroTarefa = randomNum;
         System.out.println();
         System.out.println("Tarefa adicionada com sucesso!");
 
@@ -96,9 +106,6 @@ public class Tarefa {
     public Status getStatus() {
         return status;
     }
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     public String getDescricao() {
         return descricao;
@@ -107,22 +114,33 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
+    public void marcarConcluido(){
+        this.status = Status.CONCLUIDA;
+    }
+    public Integer getNumeroTarefa() {
+        return numeroTarefa;
+    }
+    public void setNumeroTarefa(Integer numeroTarefa) {
+        this.numeroTarefa = numeroTarefa;
+    }
+
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Descrições da tarefa:\n");
 
-        sb.append("Nome da Tarefa: " + nome + "\n");
-        sb.append("Data de inicio: " + dataInicio.format(formatter) + "\n");
+        sb.append("Nome: " + nome + "\n");
+        sb.append("Inicio: " + dataInicio.format(formatter) + "\n");
 
         if (dataFim != null) {
-            sb.append("Data de fim: " + dataFim.format(formatter) + "\n");
+            sb.append("Prazo: " + dataFim.format(formatter) + "\n");
         }
         sb.append("Prioridade: " + prioridade + "\n");
         sb.append("Status: " + status + "\n");
 
         if (descricao != null) {
-            sb.append("Descricao: " + descricao + "\n");
+            sb.append("Descrição: " + descricao + "\n");
         }
 
         return sb.toString();

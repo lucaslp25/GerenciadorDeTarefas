@@ -20,7 +20,9 @@ public class Main {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         List<Tarefa> tarefas = new ArrayList<>();
-        
+
+        int contador = 0;
+
 
         while(true){
 
@@ -38,6 +40,8 @@ public class Main {
         sc.nextLine();
 
         if (opcao == 1) {
+
+            contador = tarefas.size();
 
             System.out.println("Você escolheu adicionar uma tarefa! \n");
             System.out.println("Qual será o nome da tarefa? ");
@@ -125,46 +129,99 @@ public class Main {
         }else if(opcao == 2){
 
             if(tarefas.isEmpty()){
+
                 System.out.println("Você não tem tarefas aqui!");
+
+                try {
+                    Thread.sleep(1000);
+                }catch (InterruptedException e){        //Pequena pausa para voltar para o menu
+
+                    System.out.println("Houve interrupção da pausa...");
+                    Thread.currentThread().interrupt();
+                }
+
             }else{
 
                 System.out.println("SUA LISTA DE TAREFAS: ");
                 System.out.println("\n");
 
                 for (Tarefa tarefa : tarefas) {
-                    System.out.println(tarefa);
 
+
+                    try {
+                        Thread.sleep(600);
+                    }catch (InterruptedException e){        //Pequena pausa para mostrar as tarefas
+
+                        System.out.println("Houve interrupção da pausa...");
+                        Thread.currentThread().interrupt();
+                    }
+
+                    System.out.println("TAREFA º"+tarefas.indexOf(tarefa));   //mostra pro usuário o indice da tarefa!
+                    System.out.println(tarefa);
 
 
                 }
 
+            }
+
+        } else if (opcao == 3) {
+
+            if(tarefas.isEmpty()) {
+                System.out.println("Você não tem tarefas aqui!");
+                try {
+                    Thread.sleep(1000);
+                }catch (InterruptedException e){        //Pequena pausa para voltar para o menu
+
+                    System.out.println("Houve interrupção da pausa...");
+                    Thread.currentThread().interrupt();
+                }
+            }else{
+
+                System.out.println("Digite o número da tarefa que deseja remover: ");
+                int numeroTarefa = sc.nextInt();
+                System.out.println(tarefas.get(numeroTarefa).getNome());
+                System.out.println("Tem certeza que deseja remover essa tarefa?\n(1) - SIM\n(2) - NÃO ");
+                opcao = sc.nextInt();
+                if (opcao == 1) {
+                    tarefas.remove(numeroTarefa);
+                    System.out.println("Tarefa removida com sucesso!");
+                }
+
+            }
 
 
+        } else if (opcao == 4) {
+
+            if(tarefas.isEmpty()) {
+
+                System.out.println("Você não tem tarefas aqui!");
+
+                try {
+                    Thread.sleep(1000);
+                }catch (InterruptedException e){        //Pequena pausa para voltar para o menu
+
+                    System.out.println("Houve interrupção da pausa...");
+                    Thread.currentThread().interrupt();
+                }
+            }else{
+
+                System.out.println("Digite o número da tarefa que deseja marcar como concluida: ");
+                int numeroTarefa = sc.nextInt();
+                System.out.println(tarefas.get(numeroTarefa).getNome());
+                System.out.println("Tem certeza que deseja marcar essa tarefa como concluida?\n(1) - SIM\n(2) - NÃO ");
+                opcao = sc.nextInt();
+                if (opcao == 1) {
+                    tarefas.get(numeroTarefa).marcarConcluido();
+                    System.out.println("Tarefa marcada como concluida!");
+
+                }
 
             }
 
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        if (opcao > 5 || opcao < 1) {
+            if (opcao > 5 || opcao < 1) {
             System.out.println("Opção inválida!");
         }
         if (opcao == 5) {
