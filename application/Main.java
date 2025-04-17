@@ -59,9 +59,11 @@ public class Main {
 
                     System.out.println("Qual é a prioridade da tarefa?\nBAIXA, MEDIA, ALTA, URGENTE:");
                     String prioridade = sc.nextLine();
+                    prioridade = prioridade.toUpperCase();
 
                     System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
                     String status = sc.nextLine();
+                    status = status.toUpperCase();
 
                     tarefas.add(new Tarefa(nomeTarefa, descricaoTarefa, dataFinal2, Status.valueOf(status), Prioridade.valueOf(prioridade)));
 
@@ -70,10 +72,12 @@ public class Main {
 
                     System.out.println("Qual é a prioridade da tarefa?\nBAIXA, MEDIA, ALTA, URGENTE:");
                     String prioridade = sc.nextLine();
+                    prioridade = prioridade.toUpperCase();
                     System.out.println();
 
                     System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
                     String status = sc.nextLine();
+                    status = status.toUpperCase();
 
                     tarefas.add(new Tarefa(nomeTarefa, descricaoTarefa, Status.valueOf(status), Prioridade.valueOf(prioridade)));
 
@@ -94,9 +98,11 @@ public class Main {
 
                     System.out.println("Qual é a prioridade da tarefa?\nBAIXA, MEDIA, ALTA, URGENTE:");
                     String prioridade = sc.nextLine();
+                    prioridade = prioridade.toUpperCase();
 
                     System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
                     String status = sc.nextLine();
+                    status = status.toUpperCase();
 
                     tarefas.add(new Tarefa(nomeTarefa, dataFinal2, Prioridade.valueOf(prioridade), Status.valueOf(status)));
 
@@ -105,10 +111,12 @@ public class Main {
 
                     System.out.println("Qual é a prioridade da tarefa?\nBAIXA, MEDIA, ALTA, URGENTE:");
                     String prioridade = sc.nextLine();
+                    prioridade = prioridade.toUpperCase();
                     System.out.println();
 
                     System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
                     String status = sc.nextLine();
+                    status = status.toUpperCase();
 
                     tarefas.add(new Tarefa(nomeTarefa, Status.valueOf(status), Prioridade.valueOf(prioridade)));
 

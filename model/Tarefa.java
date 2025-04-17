@@ -107,10 +107,16 @@ public class Tarefa {
 
         sb.append("Nome da Tarefa: " + nome + "\n");
         sb.append("Data de inicio: " + dataInicio.format(formatter) + "\n");
-        sb.append("Data de fim: " + dataFim.format(formatter) + "\n");
+
+        if (dataFim != null) {
+            sb.append("Data de fim: " + dataFim.format(formatter) + "\n");
+        }
         sb.append("Prioridade: " + prioridade + "\n");
         sb.append("Status: " + status + "\n");
-        sb.append("Descricao: " + descricao + "\n");
+
+        if (descricao != null) {
+            sb.append("Descricao: " + descricao + "\n");
+        }
 
         return sb.toString();
     }
