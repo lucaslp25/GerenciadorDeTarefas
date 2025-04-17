@@ -10,13 +10,11 @@ import java.time.format.DateTimeFormatter;
 public class Tarefa {
     private String nome;
     private String descricao;
-    private Integer numeroTarefa;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
     private Prioridade prioridade;              //Associação com as enumerações...
     private Status status;
-
 
 
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -40,6 +38,16 @@ public class Tarefa {
 
     }
 
+    public Tarefa(String nome,LocalDate dataInicio,LocalDate dataFim,Prioridade prioridade,Status status,String descricao){
+        this.nome = nome;
+        this.dataInicio = LocalDate.now();
+        this.dataFim = dataFim;
+        this.prioridade = prioridade;
+        this.status = status;
+        this.descricao = descricao;
+    }
+
+
     public Tarefa(String nome, String descricao,Prioridade prioridade) {
 
         this.nome = nome;
@@ -60,7 +68,6 @@ public class Tarefa {
         this.prioridade = prioridade;           //Fiz uma sobrecarga de construtores para poder dar um opção maior de
         this.descricao = descricao;             //escolhas ao usuario na hora de adicionar alguma tarefa!
         this.dataFim = dataFim;         //E a sobrecarga me permite fazer isso de forma fácil
-        //this.numeroTarefa = randomNum;
         System.out.println();
         System.out.println("Tarefa adicionada com sucesso!");
     }
@@ -73,7 +80,6 @@ public class Tarefa {
         this.dataFim = dataFim;
         this.prioridade = prioridade;
         this.status = Status.PENDENTE;
-     //   this.numeroTarefa = randomNum;
         System.out.println();
         System.out.println("Tarefa adicionada com sucesso!");
 
@@ -114,17 +120,9 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public void marcarConcluido(){
+    public void marcarConcluido() {
         this.status = Status.CONCLUIDA;
     }
-    public Integer getNumeroTarefa() {
-        return numeroTarefa;
-    }
-    public void setNumeroTarefa(Integer numeroTarefa) {
-        this.numeroTarefa = numeroTarefa;
-    }
-
-
 
     @Override
     public String toString() {
@@ -145,4 +143,5 @@ public class Tarefa {
 
         return sb.toString();
     }
+
 }
