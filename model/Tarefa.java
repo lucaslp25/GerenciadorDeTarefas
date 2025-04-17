@@ -4,22 +4,61 @@ import enums.Prioridade;
 import enums.Status;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Tarefa {
     private String nome;
+    private String descricao;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
-    private Prioridade prioridade;
+    private Prioridade prioridade;              //Associação com as enumerações...
     private Status status;
+
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
     public Tarefa(){
 
     }
 
-    public Tarefa(String nome, LocalDate dataInicio, LocalDate dataFim, Prioridade prioridade, Status status) {
+    //Construtor sem a data de término caso a pessoa não queira colocar prazo!
 
+    public Tarefa(String nome, Status status, Prioridade prioridade) {
+        this.nome = nome;
+        this.dataInicio = LocalDate.now();
+        this.status = status;
+        this.prioridade = prioridade;
+
+
+    }
+
+    public Tarefa(String nome, String descricao, Status status, Prioridade prioridade) {
+        this.nome = nome;
+        this.dataInicio = LocalDate.now();
+        this.status = status;
+        this.prioridade = prioridade;
+        this.descricao = descricao;
+    }
+
+
+    public Tarefa(String nome, String descricao,LocalDate dataFim, Status status, Prioridade prioridade) {
+        this.nome = nome;
+        this.dataInicio = LocalDate.now();
+        this.status = status;
+        this.prioridade = prioridade;           //Fiz uma sobrecarga de construtores para poder dar um opção maior de
+        this.descricao = descricao;             //escolhas ao usuario na hora de adicionar alguma tarefa!
+        this.dataFim = dataFim;         //E a sobrecarga me permite fazer isso de forma fácil
+
+    }
+
+
+    public Tarefa(String nome, LocalDate dataFim, Prioridade prioridade, Status status) {
+        this.nome = nome;
+        this.dataInicio = LocalDate.now();     //Data da tarefa vai ser definido no dia que a pessoa adicionar a tarefa
+        this.dataFim = dataFim;
+        this.prioridade = prioridade;
+        this.status = status;
 
     }
 
@@ -53,9 +92,26 @@ public class Tarefa {
     public void setStatus(Status status) {
         this.status = status;
     }
-    
 
+    public String getDescricao() {
+        return descricao;
+    }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Descrições da tarefa:\n");
 
+        sb.append("Nome da Tarefa: " + nome + "\n");
+        sb.append("Data de inicio: " + dataInicio.format(formatter) + "\n");
+        sb.append("Data de fim: " + dataFim.format(formatter) + "\n");
+        sb.append("Prioridade: " + prioridade + "\n");
+        sb.append("Status: " + status + "\n");
+        sb.append("Descricao: " + descricao + "\n");
 
+        return sb.toString();
+    }
 }
