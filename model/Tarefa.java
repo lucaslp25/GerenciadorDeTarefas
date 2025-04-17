@@ -24,41 +24,48 @@ public class Tarefa {
 
     //Construtor sem a data de término caso a pessoa não queira colocar prazo!
 
-    public Tarefa(String nome, Status status, Prioridade prioridade) {
+    public Tarefa(String nome,Prioridade prioridade) {
         this.nome = nome;
         this.dataInicio = LocalDate.now();
-        this.status = status;
+        this.status = Status.PENDENTE;
         this.prioridade = prioridade;
+        System.out.println();
+        System.out.println("Tarefa adicionada com sucesso!");
 
 
     }
 
-    public Tarefa(String nome, String descricao, Status status, Prioridade prioridade) {
+    public Tarefa(String nome, String descricao,Prioridade prioridade) {
         this.nome = nome;
         this.dataInicio = LocalDate.now();
-        this.status = status;
+        this.status = Status.PENDENTE;
         this.prioridade = prioridade;
         this.descricao = descricao;
+        System.out.println();
+        System.out.println("Tarefa adicionada com sucesso!");
     }
 
 
-    public Tarefa(String nome, String descricao,LocalDate dataFim, Status status, Prioridade prioridade) {
+    public Tarefa(String nome, String descricao,LocalDate dataFim, Prioridade prioridade) {
         this.nome = nome;
         this.dataInicio = LocalDate.now();
-        this.status = status;
+        this.status = Status.PENDENTE;
         this.prioridade = prioridade;           //Fiz uma sobrecarga de construtores para poder dar um opção maior de
         this.descricao = descricao;             //escolhas ao usuario na hora de adicionar alguma tarefa!
         this.dataFim = dataFim;         //E a sobrecarga me permite fazer isso de forma fácil
-
+        System.out.println();
+        System.out.println("Tarefa adicionada com sucesso!");
     }
 
 
-    public Tarefa(String nome, LocalDate dataFim, Prioridade prioridade, Status status) {
+    public Tarefa(String nome, LocalDate dataFim, Prioridade prioridade) {
         this.nome = nome;
         this.dataInicio = LocalDate.now();     //Data da tarefa vai ser definido no dia que a pessoa adicionar a tarefa
         this.dataFim = dataFim;
         this.prioridade = prioridade;
-        this.status = status;
+        this.status = Status.PENDENTE;
+        System.out.println();
+        System.out.println("Tarefa adicionada com sucesso!");
 
     }
 

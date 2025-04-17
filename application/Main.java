@@ -1,7 +1,6 @@
 package application;
 
 import enums.Prioridade;
-import enums.Status;
 import model.Tarefa;
 
 import java.time.LocalDate;
@@ -21,6 +20,9 @@ public class Main {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         List<Tarefa> tarefas = new ArrayList<>();
+        
+
+        while(true){
 
         System.out.println();
         System.out.println("|--GERENCIADOR DE TAREFAS--|");
@@ -61,11 +63,8 @@ public class Main {
                     String prioridade = sc.nextLine();
                     prioridade = prioridade.toUpperCase();
 
-                    System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
-                    String status = sc.nextLine();
-                    status = status.toUpperCase();
 
-                    tarefas.add(new Tarefa(nomeTarefa, descricaoTarefa, dataFinal2, Status.valueOf(status), Prioridade.valueOf(prioridade)));
+                    tarefas.add(new Tarefa(nomeTarefa, descricaoTarefa, dataFinal2, Prioridade.valueOf(prioridade)));
 
 
                 } else {
@@ -75,11 +74,9 @@ public class Main {
                     prioridade = prioridade.toUpperCase();
                     System.out.println();
 
-                    System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
-                    String status = sc.nextLine();
-                    status = status.toUpperCase();
 
-                    tarefas.add(new Tarefa(nomeTarefa, descricaoTarefa, Status.valueOf(status), Prioridade.valueOf(prioridade)));
+
+                    tarefas.add(new Tarefa(nomeTarefa, descricaoTarefa, Prioridade.valueOf(prioridade)));
 
 
                 }
@@ -100,11 +97,9 @@ public class Main {
                     String prioridade = sc.nextLine();
                     prioridade = prioridade.toUpperCase();
 
-                    System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
-                    String status = sc.nextLine();
-                    status = status.toUpperCase();
 
-                    tarefas.add(new Tarefa(nomeTarefa, dataFinal2, Prioridade.valueOf(prioridade), Status.valueOf(status)));
+
+                    tarefas.add(new Tarefa(nomeTarefa, dataFinal2, Prioridade.valueOf(prioridade)));
 
 
                 } else {
@@ -114,23 +109,73 @@ public class Main {
                     prioridade = prioridade.toUpperCase();
                     System.out.println();
 
-                    System.out.println("Qual o Status da tarefa?\nPENDENTE, CONCLUIDA:  ");
-                    String status = sc.nextLine();
-                    status = status.toUpperCase();
 
-                    tarefas.add(new Tarefa(nomeTarefa, Status.valueOf(status), Prioridade.valueOf(prioridade)));
+
+                    tarefas.add(new Tarefa(nomeTarefa, Prioridade.valueOf(prioridade)));
 
 
                 }
             }
 
 
-            for(Tarefa tarefa : tarefas) {
-                System.out.println(tarefa);
+
+
+
+
+        }else if(opcao == 2){
+
+            if(tarefas.isEmpty()){
+                System.out.println("Você não tem tarefas aqui!");
+            }else{
+
+                System.out.println("SUA LISTA DE TAREFAS: ");
+                System.out.println("\n");
+
+                for (Tarefa tarefa : tarefas) {
+                    System.out.println(tarefa);
+
+
+
+                }
+
+
+
+
             }
 
-
-            sc.close();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (opcao > 5 || opcao < 1) {
+            System.out.println("Opção inválida!");
+        }
+        if (opcao == 5) {
+            System.out.println("Saindo...");
+            break;
+        }
+        }
+        sc.close();
     }
+
+
+
+
 }
